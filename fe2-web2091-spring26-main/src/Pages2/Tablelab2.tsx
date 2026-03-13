@@ -27,7 +27,6 @@ function Tablelab2() {
       >
         Edit
       </Button>
-      
       <Button 
         type="primary" 
         danger 
@@ -64,7 +63,7 @@ function Tablelab2() {
   return (
     <> 
     <Table columns={columns} dataSource={data} pagination={{ pageSize: 2 }} />
-    <br /> 
+    <br/> 
     <Table columns={columns2} dataSource={data2} pagination={{ pageSize: 2 }} />
   </> 
   )
