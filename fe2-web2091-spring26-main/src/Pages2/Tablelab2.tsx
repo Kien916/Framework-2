@@ -49,7 +49,7 @@ function Tablelab2() {
   const columns2 = [
     { title: "ID", dataIndex: "id" },
     { title: "ProductName", dataIndex: "productname" },
-    { title: "Price", dataIndex: "price" },
+    { title: "Price", dataIndex: "price" }, 
     { title: "Category", dataIndex: "category" },
   ];
   const data2 = [

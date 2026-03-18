@@ -35,11 +35,17 @@ function Dashboard() {
           <div style={{ padding: "20px", fontWeight: "bold" }}>
             <Link to="/tablelab2">Lab2</Link>
           </div>
+           <div style={{ padding: "20px", fontWeight: "bold" }}>
+            <Link to="/lab4">Lab4</Link>
+          </div>
+          <div style={{ padding: "20px", fontWeight: "bold" }}>
+            <Link to="/lab5">Lab5</Link>
+          </div>
         </Sider>
         <Content style={{ padding: "24px", backgroundColor: "#f5f5f5" }}>
           <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
             Đây là nội dung chính của Dashboard.
-            <Table columns={columns} dataSource={data}/>
+            <Table columns={columns} dataSource={data} pagination={{ pageSize: 2 }}/>
           </div>
           
         </Content>

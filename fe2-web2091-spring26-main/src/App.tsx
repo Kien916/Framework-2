@@ -5,6 +5,8 @@ import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
 import Tablelab2 from "./Pages2/Tablelab2";
 import Lab3 from "./Pages3/lab3";
+import Lab4 from "./pages/Lab4";
+import Lab5 from "./pages/Lab5";
 
 const { Header, Content, Footer } = Layout;
 
@@ -117,6 +119,8 @@ function App() {
             </>
           }
         />
+        <Route path="/lab4" element={<Lab4/>}/>
+        <Route path="/lab5" element={<Lab5/>}/>
         <Route path="/lab3" element={<Lab3/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />

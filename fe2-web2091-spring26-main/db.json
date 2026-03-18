@@ -1,4 +1,21 @@
 {
+  "stories": [
+    {
+      "title": "kiendoan1",
+      "author": "kien1",
+      "image": "https://www.elle.vn/wp-content/uploads/2017/07/25/hinh-anh-dep-1.jpg",
+      "description": "kientrungdoan1",
+      "id": 1
+    },
+    {
+      "title": "doankien1",
+      "author": "kien1",
+      "image": "https://aeonmall-review-rikkei.cdn.vccloud.vn/website/21/articles/September2025/M9dhprx9U5memWwFMMrF.jpg",
+      "description": "Cảnh đẹp Huế đi vào trong  thơ ca không thể bỏ qua",
+      "active": true,
+      "id": 2
+    }
+  ],
   "products": [],
   "users": []
 }
