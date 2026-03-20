@@ -70,7 +70,7 @@ export default function StoryList() {
   }
   return <div>
     <Link to="/lab4">Thêm mới</Link>
-    <Table columns={columns} dataSource={data} loading={isLoading} pagination={{pageSize:5}} />;
+    <Table columns={columns} dataSource={data} loading={isLoading} pagination={{pageSize:3}} />;
   </div> 
 
  

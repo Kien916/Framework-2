@@ -25,6 +25,24 @@
       "description": "top cảnh đẹp đi vào trong thơ ca",
       "active": true,
       "id": 4
+    },
+    {
+      "title": "truyen3",
+      "author": "kien1",
+      "image": "https://aeonmall-review-rikkei.cdn.vccloud.vn/website/21/articles/September2025/M9dhprx9U5memWwFMMrF.jpg",
+      "date": "2026-03-28",
+      "description": "cảnh đẹp đi vào trong thơ ca Việt Nam",
+      "active": true,
+      "id": 5
+    },
+    {
+      "title": "truyen4",
+      "author": "kien1",
+      "image": "https://cafefcdn.com/203337114487263232/2022/3/17/-16474770890061439971826.jpg",
+      "date": "2026-03-25",
+      "description": "Cảnh đẹp đi vào trong thơ ca",
+      "active": true,
+      "id": 6
     }
   ],
   "products": [],
