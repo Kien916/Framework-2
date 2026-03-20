@@ -2,16 +2,16 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button, Image, Popconfirm, Table } from "antd";
 import axios from "axios";
 import toast from "react-hot-toast";
-function Lab5() {
-   const { data, isLoading, isError } = useQuery({
-    queryKey: ["stories"],
+export default function StoryList() {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["getAllStories"],
     queryFn: async () => {
       const res = await axios.get("http://localhost:3000/stories");
       return res.data;
     },
   });
 
-  const qc = useQueryClient();
+   const qc = useQueryClient();
 
   const { mutate } = useMutation({
     mutationFn: async (id: number) => {
@@ -19,19 +19,10 @@ function Lab5() {
     },
     onSuccess: () => {
       toast.success("Xoa truyen thanh cong");
-      qc.invalidateQueries({ queryKey: ["stories"] });
+      qc.invalidateQueries({ queryKey: ["getAllStories"] });
     },
   });
-    const columns = [
-    {
-      title: "ID",
-      dataIndex: "id",
-    },
-    {
-      title: "Ảnh",
-      dataIndex: "image",
-      render: (url: string) => <Image src={url} width={100} />,
-    },
+  const columns = [
     {
       title: "Tên truyện",
       dataIndex: "title",
@@ -40,18 +31,24 @@ function Lab5() {
       title: "Tác giả",
       dataIndex: "author",
     },
-    {
+     {
       title: "Mô tả",
       dataIndex: "description",
     },
     {
-  title: "Created At",
-  dataIndex: "createdAt",
-  render: (date: string) => new Date(date).toLocaleDateString("vi-VN")
-},{
-      title: "Action",
-      render: (_: any, record: any) => (
-        <Popconfirm
+      title: "Hình ảnh",
+      dataIndex: "image",
+      render: (src: string) => <Image src={src} height={100} />,
+    },
+    {
+      title: "Ngày tạo",
+      dataIndex: "date",
+      render: (date: string) => date ? new Date(date).toLocaleDateString('en-GB') : "-",
+    },
+    {
+        title: "Action",
+        render: (_:any, record: any) => (
+            <Popconfirm
           title="Delete the story"
           description="Are you sure to delete this story?"
           okText="Yes"
@@ -60,13 +57,14 @@ function Lab5() {
         >
           <Button danger>Delete</Button>
         </Popconfirm>
-      ),
-    },
+        )
+    }
   ];
 
   if (isError) {
-    return <div>Co loi xay ra</div>;
+    return <div>Có lỗi xảy ra</div>;
   }
-  return <Table columns={columns} dataSource={data} loading={isLoading} />;
+  return <Table columns={columns} dataSource={data} loading={isLoading} pagination={{pageSize:5}} />;
+
+ 
 }
-export default Lab5

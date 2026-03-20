@@ -1,19 +1,29 @@
 {
   "stories": [
     {
-      "title": "kiendoan1",
-      "author": "kien1",
-      "image": "https://www.elle.vn/wp-content/uploads/2017/07/25/hinh-anh-dep-1.jpg",
-      "description": "kientrungdoan1",
-      "id": 1
-    },
-    {
       "title": "doankien1",
       "author": "kien1",
       "image": "https://aeonmall-review-rikkei.cdn.vccloud.vn/website/21/articles/September2025/M9dhprx9U5memWwFMMrF.jpg",
       "description": "Cảnh đẹp Huế đi vào trong  thơ ca không thể bỏ qua",
       "active": true,
       "id": 2
+    },
+    {
+      "title": "truyen2",
+      "author": "kien1",
+      "image": "https://aeonmall-review-rikkei.cdn.vccloud.vn/website/21/articles/September2025/M9dhprx9U5memWwFMMrF.jpg",
+      "description": "Top cảnh đẹp Huế đi vào thơ ca",
+      "active": true,
+      "id": 3
+    },
+    {
+      "title": "doantrungkien",
+      "author": "kien1",
+      "image": "https://cafefcdn.com/203337114487263232/2022/3/17/-16474770890061439971826.jpg",
+      "date": "2026-03-29",
+      "description": "cảnh đẹp đi vào trong thơ ca",
+      "active": true,
+      "id": 4
     }
   ],
   "products": [],

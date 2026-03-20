@@ -3,6 +3,7 @@ import { Form, Input, Button, Layout, Checkbox, Card, Row, Col } from 'antd';
 import axios from "axios";
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const { Header, Content, Footer } = Layout;
 
@@ -11,6 +12,7 @@ export interface Story {
     author?: string;
     image?: string;
     active?: boolean;
+    date?:string;
     description?: string;
 }
 
@@ -58,23 +60,23 @@ function Lab4() {
             <Header style={{ display: 'flex', alignItems: 'center', fontSize: '20px', fontWeight: 'bold', color: "white" }}>
                 Header
             </Header>
-            
+
             <Content style={{ padding: '40px 20px', backgroundColor: '#f0f2f5' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                    
+                    <Link to="/lab5">return lab5</Link>
                     <Row gutter={[24, 24]}>
-                        
+
                         <Col xs={24} lg={14}>
-                            <Card 
-                                title="📚 Thêm Truyện Mới" 
-                                bordered={false} 
+                            <Card
+                                title="📚 Thêm Truyện Mới"
+                                bordered={false}
                                 style={{ borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}
                             >
                                 <Form form={storyForm} layout="vertical" onFinish={onFinishStory}>
                                     <Row gutter={16}>
                                         <Col span={12}>
-                                            <Form.Item 
-                                                label="Tên truyện (Title)" 
+                                            <Form.Item
+                                                label="Tên truyện (Title)"
                                                 name="title"
                                                 rules={[{ required: true, message: "Vui lòng nhập tên truyện" }]}
                                             >
@@ -90,6 +92,9 @@ function Lab4() {
 
                                     <Form.Item label="Link Ảnh (Image URL)" name="image">
                                         <Input placeholder="https://..." />
+                                    </Form.Item>
+                                    <Form.Item label="Date" name="date">
+                                        <Input type="date" />
                                     </Form.Item>
 
                                     <Form.Item label="Mô tả (Description)" name="description">
@@ -108,20 +113,20 @@ function Lab4() {
                         </Col>
 
                         <Col xs={24} lg={10}>
-                            <Card 
-                                title="📑 Thêm Danh Mục" 
-                                bordered={false} 
+                            <Card
+                                title="📑 Thêm Danh Mục"
+                                bordered={false}
                                 style={{ borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}
                             >
                                 <Form form={categoryForm} layout="vertical" onFinish={onFinishCategory}>
-                                    <Form.Item 
-                                        label="Tên danh mục (Title)" 
+                                    <Form.Item
+                                        label="Tên danh mục (Title)"
                                         name="title"
                                         rules={[{ required: true, message: "Vui lòng nhập tên danh mục" }]}
                                     >
                                         <Input placeholder="Nhập tên danh mục..." />
                                     </Form.Item>
-                                    
+
                                     <Form.Item label="Mô tả (Description)" name="description">
                                         <Input.TextArea rows={4} placeholder="Nhập mô tả danh mục..." />
                                     </Form.Item>
@@ -136,7 +141,7 @@ function Lab4() {
                                 </Form>
                             </Card>
                         </Col>
-                        
+
                     </Row>
                 </div>
             </Content>
