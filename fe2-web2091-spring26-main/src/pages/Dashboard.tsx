@@ -41,6 +41,9 @@ function Dashboard() {
           <div style={{ padding: "20px", fontWeight: "bold" }}>
             <Link to="/lab5">Lab5</Link>
           </div>
+          <div style={{ padding: "20px", fontWeight: "bold" }}>
+            <Link to="/lab6">Lab6</Link>
+          </div>
         </Sider>
         <Content style={{ padding: "24px", backgroundColor: "#f5f5f5" }}>
           <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>

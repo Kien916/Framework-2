@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input, Button, Layout, Checkbox, Card, Row, Col } from 'antd';
 import axios from "axios";
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+
 
 const { Header, Content, Footer } = Layout;
 
 export interface Story {
+    id:number;
     title: string;
     author?: string;
     image?: string;
@@ -15,48 +17,40 @@ export interface Story {
     date?:string;
     description?: string;
 }
-
-export interface Category {
-    title: string;
-    description?: string;
-    active?: boolean;
-}
-
-function Lab4() {
-    const navigate = useNavigate();
+function Lab6() {
+    const {id} = useParams();
+    const naviage = useNavigate();
+    const queryClient = useQueryClient();
     const [storyForm] = Form.useForm();
-    const [categoryForm] = Form.useForm();
+    const {data} = useQuery({
+        queryKey:["stories"],
+        queryFn: async()=>{
+            const res =await axios.get(`http://localhost:3000/stories/${id}`);
+            return res.data
+        }
+    });
+    useEffect(()=>{
+        if(data){
+            storyForm.setFieldsValue(data);
+        }
+    },[data]);
+
     const { mutate: mutateStory, isPending: isPendingStory } = useMutation({
         mutationFn: async (values: Story) => {
-            await axios.post("http://localhost:3000/stories", values);
+            await axios.put(`http://localhost:3000/stories/${id}`, values);
         },
         onError: () => toast.error("Lỗi API thêm truyện rồi!"),
         onSuccess: () => {
             toast.success("Thêm truyện thành công!");
-            storyForm.resetFields();
+            queryClient.invalidateQueries({queryKey:["stories"]});
+            naviage('/lab5');
+
         }
     });
 
     const onFinishStory = async (values: Story) => {
         mutateStory(values);
     };
-
-    const { mutate: mutateCategory, isPending: isPendingCategory } = useMutation({
-        mutationFn: async (values: Category) => {
-            await axios.post("http://localhost:3000/categories", values);
-        },
-        onError: () => toast.error("Lỗi API thêm danh mục rồi!"),
-        onSuccess: () => {
-            toast.success("Thêm danh mục thành công!");
-            categoryForm.resetFields();
-            navigate('/lab5');
-        }
-    });
-
-    const onFinishCategory = async (values: Category) => {
-        mutateCategory(values);
-    };
-
     return (
         <Layout style={{ minHeight: '100vh' }}>
             <Header style={{ display: 'flex', alignItems: 'center', fontSize: '20px', fontWeight: 'bold', color: "white" }}>
@@ -66,11 +60,11 @@ function Lab4() {
             <Content style={{ padding: '40px 20px', backgroundColor: '#f0f2f5' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <Link to="/lab5">return lab5</Link>
-                    <Row gutter={[24, 24]}>
+                    <Row justify={'center'} gutter={[24, 24]}>
 
                         <Col xs={24} lg={14}>
                             <Card
-                                title="📚 Thêm Truyện Mới"
+                                title="📚Sửa Truyện"
                                 bordered={false}
                                 style={{ borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}
                             >
@@ -113,37 +107,6 @@ function Lab4() {
                                 </Form>
                             </Card>
                         </Col>
-
-                        <Col xs={24} lg={10}>
-                            <Card
-                                title="📑 Thêm Danh Mục"
-                                bordered={false}
-                                style={{ borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}
-                            >
-                                <Form form={categoryForm} layout="vertical" onFinish={onFinishCategory}>
-                                    <Form.Item
-                                        label="Tên danh mục (Title)"
-                                        name="title"
-                                        rules={[{ required: true, message: "Vui lòng nhập tên danh mục" }]}
-                                    >
-                                        <Input placeholder="Nhập tên danh mục..." />
-                                    </Form.Item>
-
-                                    <Form.Item label="Mô tả (Description)" name="description">
-                                        <Input.TextArea rows={4} placeholder="Nhập mô tả danh mục..." />
-                                    </Form.Item>
-
-                                    <Form.Item label="Trạng thái" name="active" valuePropName="checked">
-                                        <Checkbox>Kích hoạt (Active)</Checkbox>
-                                    </Form.Item>
-
-                                    <Button htmlType="submit" loading={isPendingCategory} type="primary" style={{ backgroundColor: '#52c41a' }} size="large" block>
-                                        Lưu Danh Mục
-                                    </Button>
-                                </Form>
-                            </Card>
-                        </Col>
-
                     </Row>
                 </div>
             </Content>
@@ -155,4 +118,4 @@ function Lab4() {
     );
 }
 
-export default Lab4;
+export default Lab6;
