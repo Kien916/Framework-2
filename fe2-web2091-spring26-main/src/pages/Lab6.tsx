@@ -22,7 +22,7 @@ function Lab6() {
     const naviage = useNavigate();
     const queryClient = useQueryClient();
     const [storyForm] = Form.useForm();
-    const {data} = useQuery({
+    const {data, isLoading} = useQuery({
         queryKey:["stories"],
         queryFn: async()=>{
             const res =await axios.get(`http://localhost:3000/stories/${id}`);
@@ -37,14 +37,13 @@ function Lab6() {
 
     const { mutate: mutateStory, isPending: isPendingStory } = useMutation({
         mutationFn: async (values: Story) => {
-            await axios.put(`http://localhost:3000/stories/${id}`, values);
+            await axios.patch(`http://localhost:3000/stories/${id}`, values);
         },
         onError: () => toast.error("Lỗi API thêm truyện rồi!"),
         onSuccess: () => {
             toast.success("Thêm truyện thành công!");
             queryClient.invalidateQueries({queryKey:["stories"]});
             naviage('/lab5');
-
         }
     });
 
@@ -68,7 +67,7 @@ function Lab6() {
                                 bordered={false}
                                 style={{ borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}
                             >
-                                <Form form={storyForm} layout="vertical" onFinish={onFinishStory}>
+                                <Form form={storyForm} layout="vertical" disabled={isLoading || isPendingStory} onFinish={onFinishStory}>
                                     <Row gutter={16}>
                                         <Col span={12}>
                                             <Form.Item
@@ -80,7 +79,10 @@ function Lab6() {
                                             </Form.Item>
                                         </Col>
                                         <Col span={12}>
-                                            <Form.Item label="Tác giả (Author)" name="author">
+                                            <Form.Item label="Tác giả (Author)" name="author"
+                                            rules={[
+                                                {required:true, message:"vui long nhap ten tac gia"}
+                                            ]}>
                                                 <Input placeholder="Tên tác giả..." />
                                             </Form.Item>
                                         </Col>

@@ -68,7 +68,10 @@ export default function StoryList() {
   if (isError) {
     return <div>Có lỗi xảy ra</div>;
   }
-  return <Table columns={columns} dataSource={data} loading={isLoading} pagination={{pageSize:5}} />;
+  return <div>
+    <Link to="/lab4">Thêm mới</Link>
+    <Table columns={columns} dataSource={data} loading={isLoading} pagination={{pageSize:5}} />;
+  </div> 
 
  
 }
