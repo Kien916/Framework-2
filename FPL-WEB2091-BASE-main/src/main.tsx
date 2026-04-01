@@ -12,11 +12,11 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
- <UserProvider>
-          {/* ThemeProvider  */}
+        <UserProvider>
+          {/* App la  children */}
           <App />
-          {/* AuthProvider */}
-        </UserProvider>      </QueryClientProvider>
+        </UserProvider>
+      </QueryClientProvider>
     </BrowserRouter>
   </StrictMode>,
 );
