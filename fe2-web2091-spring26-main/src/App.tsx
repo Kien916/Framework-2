@@ -2,14 +2,15 @@ import { Toaster } from "react-hot-toast";
 import { Link, Routes, Route } from "react-router-dom";
 import { Layout, Form, Table, Input, Button } from "antd";
 import Dashboard from "./pages/Dashboard";
-import Register from "./pages/Register";
+import Register from "./components/Register";
 import Tablelab2 from "./Pages2/Tablelab2";
 import Lab3 from "./Pages3/lab3";
 import Lab4 from "./pages/Lab4";
 import Lab5 from "./pages/Lab5";
 import Lab6 from "./pages/Lab6";
 import Lab7 from "./pages/Lab7";
-
+import Navbar from "./components/Header";
+import Login from "./components/Login";
 const { Header, Content, Footer } = Layout;
 
 function App() {
@@ -28,35 +29,8 @@ function App() {
 
   return (
     <div>
-      <nav className="bg-blue-600 text-white shadow">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link to="/" className="text-xl font-semibold">
-            <strong>WEB2091 App</strong>
-          </Link>
-
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="hover:text-gray-200">
-              Trang chủ
-            </Link>
-            <Link to="/dashboard" className="hover:text-gray-200">
-              Trang dashboard
-            </Link>
-            <Link to="/lab3" className="hover:text-gray-200">
-            lab3
-            </Link>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-6">
-            <Link to="#" className="hover:text-gray-200">
-              Đăng nhập
-            </Link>
-            <Link to="/register" className="hover:text-gray-200">
-              Đăng ký
-            </Link>
-          </div>
-        </div>
-      </nav>
-
+      <Navbar />
+      
       <Routes>
 
         <Route
@@ -122,18 +96,18 @@ function App() {
           }
         />
         <Route path="/lab4" element={<Lab4/>}/>
-        <Route path="/lab6/:id" element={<Lab6/>}/>
         <Route path="/lab7" element={<Lab7/>}/>
+        <Route path="/lab6/:id" element={<Lab6/>}/>
         <Route path="/lab5" element={<Lab5/>}/> 
         <Route path="/lab3" element={<Lab3/>}/>
+        <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/tablelab2" element={<Tablelab2/>}/>
       </Routes>
-
+      <Toaster />
       <Toaster />
 
-      <Toaster />
     </div>
   );
 }

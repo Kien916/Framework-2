@@ -1,7 +1,5 @@
-// src/context/UserContext.tsx
 import { createContext, useState, ReactNode } from "react";
 
-// Thêm trường avatar vào kiểu dữ liệu
 type User = {
   name: string;
   avatar: string; 

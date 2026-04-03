@@ -48,9 +48,28 @@
   "products": [],
   "users": [
     {
+      "name": "Admin",
       "email": "admin@gmail.com",
       "password": "$2a$10$3cvf5QEZ67nFSzYpYScBiOcyghM9w/Y.2HoZs/9ZJC6qccHPv62Cq",
       "id": 1
+    },
+    {
+      "email": "kienkien123@gmail.com",
+      "password": "$2a$10$JwmGag4trAjmN/ISUFHdc.l7O2z7Ptf.NnBJNA.2LJauoEr1uzt36",
+      "name": "Đoàn Trung Kiên P H 5 9 6 2 4",
+      "id": 2
+    },
+    {
+      "email": "kien1@gmail.com",
+      "password": "$2a$10$t1I1vTEVqz29paE/dgViZOuRNFwWHZHHb8AFUHE3PYrCWo6EwpcWy",
+      "name": "kien1",
+      "id": 3
+    },
+    {
+      "email": "kien3@gmail.com",
+      "password": "$2a$10$WAQ6FiQyH9NI07lIi8TPruCSpy4nURoSN9IQX6ktseyqUYG40Z6bq",
+      "name": "kien3",
+      "id": 4
     }
   ]
 }
